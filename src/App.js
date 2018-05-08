@@ -1,6 +1,5 @@
 import React from "react";
 
-import Titles from "./components/Titles";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 import Favorites from "./components/Favorites";
@@ -51,10 +50,10 @@ class App extends React.Component {
           <div className="main">
             <div className="container">
               <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 title-container">
-                  <Titles />
+                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-4 title-container">
+                  <Favorites />
                 </div>
-                <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-container">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-8 form-container">
                   <Form getWeather={this.getWeather} />
                   <Weather 
                     temperature={this.state.temperature} 
@@ -64,7 +63,6 @@ class App extends React.Component {
                     description={this.state.description}
                     error={this.state.error}
                   />
-                  <Favorites />
                 </div>
               </div>
             </div>

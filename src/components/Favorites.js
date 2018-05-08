@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Weather from "./Weather";
+import FavorCity from "./FavorCity";
 
 var citiesMap = {
     'london': 'london',
@@ -52,7 +52,7 @@ class Favorites extends Component {
                           )
                       }, this)
                     }
-                    <Weather temperature={this.state.temperature} 
+                    <FavorCity temperature={this.state.temperature} 
                     humidity={this.state.humidity}
                     city={this.state.city}
                     country={this.state.country}

@@ -1,13 +1,7 @@
 import React from "react";
 
-const Weather = props => (
-	<div>
-		<div>
-			{
-				props.city&& <button>Add to Fav</button>
-			}
-		</div>
-		<div className="weather__info">
+const FavorCity = props => (
+	<div className="weather__info">
 	 {	
 	 	props.city&& <p className="weather__key"> Location: 
 	 		<span className="weather__value"> { props.city }, { props.country }</span>
@@ -33,8 +27,6 @@ const Weather = props => (
 	 }
 
 	</div>
-	</div>
-	
 );
 
-export default Weather;
+export default FavorCity;
