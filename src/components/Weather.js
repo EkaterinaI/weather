@@ -2,11 +2,8 @@ import React from "react";
 
 const Weather = props => (
 	<div>
-		<div>
-			{
-				props.city&& <button>Add to Fav</button>
-			}
-		</div>
+		{ props.city&& <div onClick={props.addFav} className="favButton">Add to fav</div>}
+	
 		<div className="weather__info">
 	 {	
 	 	props.city&& <p className="weather__key"> Location: 
@@ -15,7 +12,7 @@ const Weather = props => (
 	 }
 	 { 	
 	 	props.temperature && <p className="weather__key"> Temperature: 
-	 		<span className="weather__value"> { props.temperature }	</span>
+	 		<span className="weather__value"> { props.temperature }	<div>F</div></span>
 	 	</p> 
 	 }
 	 { 	

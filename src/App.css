@@ -136,3 +136,7 @@ button:active {
 .selected {
   background: #f16051;
 }
+
+.favButton {
+  color: #fff;
+}
