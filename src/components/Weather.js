@@ -2,7 +2,7 @@ import React from "react";
 
 const Weather = props => (
 	<div>
-		{ props.city&& <div onClick={props.addFav} className="favButton">Add to fav</div>}
+		{ props.city&& <button onClick={props.addFav} className="favButton">Add to fav</button>}
 	
 		<div className="weather__info">
 	 {	
@@ -12,7 +12,7 @@ const Weather = props => (
 	 }
 	 { 	
 	 	props.temperature && <p className="weather__key"> Temperature: 
-	 		<span className="weather__value"> { props.temperature }	<div>F</div></span>
+	 		<span className="weather__value"> { props.temperature }<button onClick={props.changeUnit}>&deg;{ props.textvalue }</button> </span>
 	 	</p> 
 	 }
 	 { 	

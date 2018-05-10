@@ -2,17 +2,12 @@ import React from "react";
 
 import Form from "./components/Form";
 import Weather from "./components/Weather";
-// import Favorites from "./components/Favorites";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+
 
 const API_KEY = "502f4bef0c6a6c724bc1612c6cfe292e";
 
 var citiesMap = [
-   'london',
+  'london',
   'kiev',
   'manchester',
   'odessa',
@@ -42,7 +37,9 @@ class App extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
-        error: ""
+        error: "",
+        textvalue: 'C' 
+
       });
     } else {
       this.setState({
@@ -61,9 +58,30 @@ class App extends React.Component {
     citiesMap.push(this.state.city);
     localStorage.setItem('citiesMap', JSON.stringify(citiesMap));
     this.setState({citiesMap: this.state.citiesMap});
-    console.log(citiesMap)
   }
 
+  changeUnit = async (textvalue) => {
+    const cityN = this.state.city;
+
+    if(this.state.textvalue === 'F') {
+      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityN}&appid=${API_KEY}&units=metric`);
+      const data = await api_call.json();
+      this.setState({
+        temperature: data.main.temp,
+        error: "",
+        textvalue: 'C'
+      });
+      
+    } else {
+      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityN}&appid=${API_KEY}&units=imperial`);
+      const data = await api_call.json();
+      this.setState({
+        temperature: data.main.temp,
+        error: "",
+        textvalue: 'F'
+      });
+    }
+  }
 onCityClick = async (e) => {
         const cityName = e;
         const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`);
@@ -75,7 +93,8 @@ onCityClick = async (e) => {
             country: data.sys.country,
             humidity: data.main.humidity,
             description: data.weather[0].description,
-            error: ""
+            error: "",
+            textvalue: 'C' 
           });
         
       }
@@ -119,6 +138,8 @@ onCityClick = async (e) => {
                     description={this.state.description}
                     error={this.state.error}
                     addFav={this.addFav}
+                    changeUnit={this.changeUnit}
+                    textvalue={this.state.textvalue}
                   />
             
                   
