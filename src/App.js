@@ -54,12 +54,23 @@ class App extends React.Component {
     }
   }
  
+  // addFav = (city) => {
+  //   citiesMap.push(this.state.city);
+  //   localStorage.setItem('citiesMap', JSON.stringify(citiesMap));
+  //   this.setState({citiesMap: this.state.citiesMap});
+  // }
   addFav = (city) => {
-    citiesMap.push(this.state.city);
-    localStorage.setItem('citiesMap', JSON.stringify(citiesMap));
-    this.setState({citiesMap: this.state.citiesMap});
+ 
+      let cityName = this.state.city;
+      if(citiesMap.indexOf(cityName) === -1) {
+        citiesMap.push(this.state.city);
+        localStorage.setItem('citiesMap', JSON.stringify(citiesMap));
+        this.setState({citiesMap: this.state.citiesMap});
+      } else {
+        return
+      }
+    
   }
-
   changeUnit = async (textvalue) => {
     const cityN = this.state.city;
 
